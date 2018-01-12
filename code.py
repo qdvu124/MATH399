@@ -137,7 +137,6 @@ def norm(v1, v2):
     
     dist =  np.sqrt((v1[0]- v2[0])**2 + (v2[1]-v1[1])**2)
     return dist
-    
 
 def initialize(G):
     # this function creates the dictionary where the names are enumerated and the values are vertex objects
@@ -183,7 +182,6 @@ def initialize(G):
                     vertices[i].ns.remove(j)
                     j.ns.remove(vertices[i])
         
-    
     return vertices
     
 def main():
@@ -192,7 +190,5 @@ def main():
     size = trisize(G)
     vs = initialize(G)
     plotting(vs, G, size)
-
-
 
 main()    
