@@ -6,6 +6,26 @@ import random
 from datetime import datetime
 import time
 
+class Stack:
+    # Stack to implement Wilson's algorithm
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[len(self.items)-1]
+
+    def size(self):
+        return len(self.items)
+
 class particle():
     # this class creates a particle object that walks around a graph. its only property is the vertex object it occupies
     
