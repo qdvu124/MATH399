@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-%matplotlib inline                    
+# %matplotlib inline                    
 # comment out previous if not using ipython
 import numpy as np
 import random
@@ -113,6 +113,7 @@ def plotting(vs, G, size):
                     xs = [vs[v].r[0], v2.r[0]]
                     ys = [vs[v].r[1], v2.r[1]]
                     plt.plot(xs, ys, color='blue', linewidth='1')
+
         if not(vs[v].occ):
             for v2 in vs[v].ns:
                 if not(v2.occ):
@@ -126,6 +127,7 @@ def plotting(vs, G, size):
     plt.ylim(-size*.1, size)
     plt.gca().set_aspect('equal', adjustable='box')
     plt.draw()
+    plt.show()
     
 def norm(v1, v2):
     # this function finds the Euclidean distance between two 2D vectors
