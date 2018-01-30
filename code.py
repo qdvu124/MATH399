@@ -4,7 +4,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 from datetime import datetime
+from enum import Enum
 import time
+
+class State(Enum):
+    # Enumeration of possible states in Wilson's algorithm
+    NOT_VISITED = 'NOT VISITED'
+    EXPLORED = 'EXPLORED'
+    VISITED = 'VISITED'
 
 class Stack:
     # Stack to implement Wilson's algorithm
@@ -39,7 +46,8 @@ class vertex:
         self.r = [xpos, ypos]
         self.ns = [] #this is list of the neighbors of the vertex
         self.d = random.randint(-2,1) #this is the direction that the edge is pointing in the rotor router algorithm
-        self.occ = False #this boolean property determines whether of or not the vertex is occupied by a particle
+        self.state = State.NOT_VISITED #initialize the vertex as not being visited yet
+        #self.occ = False #this boolean property determines whether of or not the vertex is occupied by a particle
         self.level = int(round((self.r[0] + self.r[1]/np.sqrt(3)))+ 1) # this is the "sphere" that the vertex lies on
         self.row = int(round((self.r[0]-self.r[1]/np.sqrt(3)) + 1)) # this is the row intersecting the spheres
         
@@ -206,11 +214,11 @@ def initialize(G):
         
     return vertices
     
-def main():
-    n = 4 #This will change the size
+def main(graph_size):
+    n = graph_size #This will change the size
     G = generate(n)
     size = trisize(G)
     vs = initialize(G)
     plotting(vs, G, size)
 
-main()    
+main(5)    
