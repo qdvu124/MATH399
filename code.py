@@ -47,11 +47,13 @@ class vertex:
         self.ns = [] #this is list of the neighbors of the vertex
         self.d = random.randint(-2,1) #this is the direction that the edge is pointing in the rotor router algorithm
         self.state = State.NOT_VISITED #initialize the vertex as not being visited yet
-        #self.occ = False #this boolean property determines whether of or not the vertex is occupied by a particle
+        self.occ = False #this boolean property determines whether of or not the vertex is occupied by a particle
         self.level = int(round((self.r[0] + self.r[1]/np.sqrt(3)))+ 1) # this is the "sphere" that the vertex lies on
         self.row = int(round((self.r[0]-self.r[1]/np.sqrt(3)) + 1)) # this is the row intersecting the spheres
         
-        
+    def __eq__(self, other): 
+        return self.r[0] == other.r[0] and self.r[1] == other.r[1]
+
 def trisize(G):
     #This function determines the overall side length of the gasket G
     #
@@ -110,7 +112,7 @@ def generate(n):
         G = tripler(G)
     return G
 
-def plotting(vs, G, size):
+def plotting(vs, G):
     # this function plots the SG with occupied vertices blue and unoccupied red.
     # inputs: 
     #        G : a list of vertices of the generated SG
@@ -118,19 +120,6 @@ def plotting(vs, G, size):
     #        size : side length of SG
     # outputs:
     #        figure(): plot of the SG
-    
-    xs_f = []
-    ys_f = []
-    xs_u = []
-    ys_u = []
-    
-    for v in vs:
-        if vs[v].occ:
-            xs_f.append(vs[v].r[0])
-            ys_f.append(vs[v].r[1])
-        else:
-            xs_u.append(vs[v].r[0])
-            ys_u.append(vs[v].r[1])
     
     size = trisize(G)
     
@@ -149,13 +138,75 @@ def plotting(vs, G, size):
                     ys = [vs[v].r[1], v2.r[1]]
                     plt.plot(xs, ys, color='red', linewidth='1')
     
-    #plt.plot(xs_f, ys_f, 'o', color='blue', markersize=1, markeredgecolor='none')
-    #plt.plot(xs_u, ys_u, 'o', color='red', markersize=1, markeredgecolor='none')
     plt.xlim(-size*.1, size * 1.1)
     plt.ylim(-size*.1, size)
     plt.gca().set_aspect('equal', adjustable='box')
     plt.draw()
     plt.show()
+
+def wilson(vs, G):
+    size = trisize(G)
+    wilson_stack = Stack()
+
+    # color the graph blue first
+    for v in vs:
+        for v2 in vs[v].ns:
+            xs = [vs[v].r[0], v2.r[0]]
+            ys = [vs[v].r[1], v2.r[1]]
+            plt.plot(xs, ys, color='white', linewidth='1')
+    
+    starting_vertex = select_unvisited_vertex(vs)
+    starting_vertex.state = State.VISITED
+    cover_count = 1
+
+    # while we still do not have a spanning tree yet, i.e some vertices are not yet covered
+    while cover_count < len(vs):
+        current_vertex = select_unvisited_vertex(vs)
+        current_vertex.state = State.EXPLORED
+        wilson_stack.push(current_vertex)
+        # begin the random walk starting at this
+        while True:
+            current_vertex = select_neighbor(current_vertex)
+            # we have encountered some vertex that we have already visited. Begin adding vertices to tree
+            if current_vertex.state == State.VISITED:
+                start = current_vertex
+                while not(wilson_stack.isEmpty()):
+                    end = wilson_stack.pop()
+                    end.state = State.VISITED
+                    cover_count = cover_count + 1
+                    xs = [start.r[0], end.r[0]]
+                    ys = [start.r[1], end.r[1]]
+                    plt.plot(xs, ys, color='red', linewidth='1')
+                    start = end
+                break
+            # loop detected
+            elif current_vertex.state == State.EXPLORED:
+                while not(current_vertex == wilson_stack.peek()):
+                    discarded_vertex = wilson_stack.pop()
+                    discarded_vertex.state = State.NOT_VISITED
+            # no problems here, keep adding to the stack
+            elif current_vertex.state == State.NOT_VISITED:
+                current_vertex.state = State.EXPLORED
+                wilson_stack.push(current_vertex)
+
+    plt.xlim(-size*.1, size * 1.1)
+    plt.ylim(-size*.1, size)
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.draw()
+    plt.show()
+
+def select_neighbor(current_vertex):
+    position = np.random.randint(0, len(current_vertex.ns))
+    return current_vertex.ns[position]
+
+def select_unvisited_vertex(vs):
+    unvisited_vertices = []
+    for v in vs:
+        if vs[v].state == State.NOT_VISITED:
+            unvisited_vertices.append(vs[v])
+    #print('Unvisted ' + str(len(unvisited_vertices)))
+    position = np.random.randint(0, len(unvisited_vertices))
+    return unvisited_vertices[position]
     
 def norm(v1, v2):
     # this function finds the Euclidean distance between two 2D vectors
@@ -217,8 +268,8 @@ def initialize(G):
 def main(graph_size):
     n = graph_size #This will change the size
     G = generate(n)
-    size = trisize(G)
     vs = initialize(G)
-    plotting(vs, G, size)
+    #plotting(vs, G)
+    wilson(vs, G)
 
 main(5)    
