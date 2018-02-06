@@ -5,7 +5,7 @@ from tree import Tree
 from edge import Edge
 from state import State
 
-def main_algorithm(vs, size):
+def main_algorithm(vs):
     wilson_stack = Stack()
     wilson_tree = Tree()
     starting_vertex = select_unvisited_vertex(vs)
@@ -27,7 +27,7 @@ def main_algorithm(vs, size):
                     end = wilson_stack.pop()
                     end.state = State.VISITED
                     cover_count = cover_count + 1
-                    wilson_tree.addEdge(Edge(start, end))
+                    wilson_tree.add_edge(Edge(start, end))
                     start = end
                 break
             # loop detected
@@ -39,8 +39,7 @@ def main_algorithm(vs, size):
             elif current_vertex.state == State.NOT_VISITED:
                 current_vertex.state = State.EXPLORED
                 wilson_stack.push(current_vertex)
-
-    wilson_tree.print(size)
+    return wilson_tree
 
 def select_neighbor(current_vertex):
     position = np.random.randint(0, len(current_vertex.ns))

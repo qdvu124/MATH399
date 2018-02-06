@@ -14,7 +14,7 @@ class Vertex:
         self.row = int(round((self.r[0]-self.r[1]/np.sqrt(3)) + 1)) # this is the row intersecting the spheres
 
     def __str__(self):
-        return 'x: ' +str(self.r[0]) + 'y: ' + str(self.r[1])
+        return 'x: ' +str(self.r[0]) + ' y: ' + str(self.r[1])
         
     def __eq__(self, other): 
         return self.r[0] == other.r[0] and self.r[1] == other.r[1]
