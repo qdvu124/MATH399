@@ -23,7 +23,7 @@ class Tree:
             if (current_count == number_of_vertices):
                 return size
             size = size + 1
-            current_count = current_count + 2 * (current_count - 1)
+            current_count = current_count + 2 * (current_count - 1) - 1
 
     def print(self):
         for edge in self.edge_list:
