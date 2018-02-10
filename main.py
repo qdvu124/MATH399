@@ -24,4 +24,4 @@ def main(graph_size, iteration):
 
     print(count/float (iteration))
 
-main(2, 100000)
+main(3, 100000)
