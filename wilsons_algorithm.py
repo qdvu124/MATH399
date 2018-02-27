@@ -5,7 +5,12 @@ from tree import Tree
 from edge import Edge
 from state import State
 
-def main_algorithm(vs):
+# Wilson's algorithm on the list of vertices, and with loop rentention probability p
+def main_algorithm(vs, p):
+    if (p < 0 or p > 1):
+        print('Invalid value for loop retention probability')
+        return
+
     wilson_stack = Stack()
     wilson_tree = Tree()
     starting_vertex = select_unvisited_vertex(vs)
@@ -22,25 +27,37 @@ def main_algorithm(vs):
             current_vertex = select_neighbor(current_vertex)
             # we have encountered some vertex that we have already visited. Begin adding vertices to tree
             if current_vertex.state == State.VISITED:
-                start = current_vertex
-                while not(wilson_stack.isEmpty()):
-                    end = wilson_stack.pop()
-                    end.state = State.VISITED
-                    cover_count = cover_count + 1
-                    wilson_tree.add_edge(Edge(start, end))
-                    start = end
+                cover_count = cover_count + add_stack_to_tree(current_vertex, wilson_stack, wilson_tree)
                 break
             # loop detected
             elif current_vertex.state == State.EXPLORED:
-                while not(current_vertex == wilson_stack.peek()):
-                    discarded_vertex = wilson_stack.pop()
-                    discarded_vertex.state = State.NOT_VISITED
+                if (np.random.uniform() < p):
+                    cover_count = cover_count + add_stack_to_tree(current_vertex, wilson_stack, wilson_tree)
+                else:
+                    discard_stack(current_vertex, wilson_stack)
             # no problems here, keep adding to the stack
             elif current_vertex.state == State.NOT_VISITED:
                 current_vertex.state = State.EXPLORED
                 wilson_stack.push(current_vertex)
+    wilson_tree.print()
     return wilson_tree
 
+def discard_stack(current_vertex, wilson_stack):
+    while not(current_vertex == wilson_stack.peek()):
+        discarded_vertex = wilson_stack.pop()
+        discarded_vertex.state = State.NOT_VISITED
+
+def add_stack_to_tree(current_vertex, wilson_stack, wilson_tree):
+    partial_cover_count = 0
+    start = current_vertex
+    while not(wilson_stack.isEmpty()):
+        end = wilson_stack.pop()
+        end.state = State.VISITED
+        partial_cover_count = partial_cover_count + 1
+        wilson_tree.add_edge(Edge(start, end))
+        start = end
+    return partial_cover_count
+ 
 def select_neighbor(current_vertex):
     position = np.random.randint(0, len(current_vertex.ns))
     return current_vertex.ns[position]

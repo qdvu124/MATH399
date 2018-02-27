@@ -14,14 +14,14 @@ def main(graph_size, iteration):
         gasket.multiply(graph_size)
         vs = gasket.get_enum_vertices()
         #plotting(vs, G)
-        tree_collection.append(main_algorithm(vs))
+        tree_collection.append(main_algorithm(vs, 1))
 
-    edge = Edge(Vertex(0, 0), Vertex(1, 0))
-    count = 0
-    for tree in tree_collection:
-        if tree.contains_edge(edge):
-            count = count + 1
+    #edge = Edge(Vertex(0, 0), Vertex(1, 0))
+    #count = 0
+    #for tree in tree_collection:
+    #    if tree.contains_edge(edge):
+    #        count = count + 1
 
-    print(count/float (iteration))
+    #print(count/float (iteration))
 
-main(3, 100000)
+main(3, 1)
