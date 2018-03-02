@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 from edge import Edge
 
 class Tree:
-    def __init__(self):
+
+    def __init__(self, vc):
         self.edge_list = []
+        self.vertex_count = vc 
 
     def add_edge(self, edge):
         self.edge_list.append(edge)
@@ -16,14 +18,12 @@ class Tree:
         return False
 
     def tree_size(self):
-        return 5
-        number_of_vertices = len(self.edge_list) + 1
         current_count = 3
         size = 1
         while True:
-            if (current_count == number_of_vertices):
-                return size
-            size = size + 1
+            if (current_count == self.vertex_count):
+                return size 
+            size = size * 2
             current_count = current_count + 2 * (current_count - 1) - 1
 
     def print(self):
