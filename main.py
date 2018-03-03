@@ -1,6 +1,7 @@
 # %matplotlib inline                    
 # comment out previous if not using ipython
-  
+import matplotlib.pyplot as plt
+
 from gasket import Gasket
 from edge import Edge
 from vertex import Vertex
@@ -14,14 +15,16 @@ def main(graph_size, iteration):
         gasket.multiply(graph_size)
         vs = gasket.get_enum_vertices()
         #plotting(vs, G)
-        tree_collection.append(main_algorithm(vs))
+        tree_collection.append(main_algorithm(vs, 1))
 
-    edge = Edge(Vertex(0, 0), Vertex(1, 0))
-    count = 0
-    for tree in tree_collection:
-        if tree.contains_edge(edge):
-            count = count + 1
+        for tree in tree_collection:
+            tree.print()
+    #edge = Edge(Vertex(0, 0), Vertex(1, 0))
+    #count = 0
+    #for tree in tree_collection:
+    #    if tree.contains_edge(edge):
+    #        count = count + 1
 
-    print(count/float (iteration))
+    #print(count/float (iteration))
 
-main(3, 100000)
+main(3, 1)

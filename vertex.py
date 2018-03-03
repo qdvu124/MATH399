@@ -4,7 +4,7 @@ from state import State
 class Vertex:
     # this class creates a vertex within the SG 
     
-    def __init__(self,xpos, ypos):
+    def __init__(self, xpos, ypos):
         self.r = [xpos, ypos]
         self.ns = [] #this is list of the neighbors of the vertex
         self.d = np.random.randint(-2,1) #this is the direction that the edge is pointing in the rotor router algorithm
