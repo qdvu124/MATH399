@@ -12,7 +12,7 @@ def main_algorithm(vs, p):
         return
 
     wilson_stack = Stack()
-    wilson_tree = Tree(len(vs))
+    wilson_tree = Tree(vs)
     starting_vertex = select_unvisited_vertex(vs)
     starting_vertex.state = State.VISITED
     cover_count = 1
@@ -34,17 +34,16 @@ def main_algorithm(vs, p):
             elif current_vertex.state == State.EXPLORED:
                 if (np.random.uniform() < p):
                     wilson_stack.push(current_vertex)
-                    cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_tree)
+                    cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_tree) 
                 else:
-                    discard_stack(current_vertex, wilson_stack)
+                    discard_loop(current_vertex, wilson_stack)
             # no problems here, keep adding to the stack
             elif current_vertex.state == State.NOT_VISITED:
                 current_vertex.state = State.EXPLORED
                 wilson_stack.push(current_vertex)
-    wilson_tree.print()
     return wilson_tree
 
-def discard_stack(current_vertex, wilson_stack):
+def discard_loop(current_vertex, wilson_stack):
     while not(current_vertex == wilson_stack.peek()):
         discarded_vertex = wilson_stack.pop()
         discarded_vertex.state = State.NOT_VISITED

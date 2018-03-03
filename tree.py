@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 
 from edge import Edge
+from state import State
 
 class Tree:
 
-    def __init__(self, vc):
+    def __init__(self, vs):
         self.edge_list = []
-        self.vertex_count = vc 
+        self.vs = vs
 
     def add_edge(self, edge):
         self.edge_list.append(edge)
@@ -21,12 +22,18 @@ class Tree:
         current_count = 3
         size = 1
         while True:
-            if (current_count == self.vertex_count):
+            if (current_count == len(self.vs)):
                 return size 
             size = size * 2
             current_count = current_count + 2 * (current_count - 1) - 1
 
     def print(self):
+        for index in self.vs:
+            if self.vs[index].state == State.VISITED:
+                plt.scatter(self.vs[index].r[0], self.vs[index].r[1], c='r')
+            else:
+                plt.scatter(self.vs[index].r[0], self.vs[index].r[1], c='b')
+
         for edge in self.edge_list:
             x_s = [edge.starting_vertex.r[0], edge.ending_vertex.r[0]]
             y_s = [edge.starting_vertex.r[1], edge.ending_vertex.r[1]]
