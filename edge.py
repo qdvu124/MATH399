@@ -11,3 +11,6 @@ class Edge:
         or (self.ending_vertex == other.starting_vertex and self.starting_vertex == other.ending_vertex)):
             return True
         return False
+
+    def contains(self, vertex):
+        return (self.starting_vertex == vertex or self.ending_vertex == vertex)

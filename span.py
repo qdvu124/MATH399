@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 from edge import Edge
 from state import State
 
-class Tree:
+class Span:
 
     def __init__(self, vs):
         self.edge_list = []
         self.vs = vs
+        self.component_count = 0
 
     def add_edge(self, edge):
         self.edge_list.append(edge)
@@ -18,7 +19,7 @@ class Tree:
                 return True
         return False
 
-    def tree_size(self):
+    def span_size(self):
         current_count = 3
         size = 1
         while True:
@@ -38,9 +39,10 @@ class Tree:
             x_s = [edge.starting_vertex.r[0], edge.ending_vertex.r[0]]
             y_s = [edge.starting_vertex.r[1], edge.ending_vertex.r[1]]
             plt.plot(x_s, y_s, color='red', linewidth='1')
-        size = self.tree_size()
+        size = self.span_size()
         plt.xlim(-size*.1, size * 1.1)
         plt.ylim(-size*.1, size)
         plt.gca().set_aspect('equal', adjustable='box')
         plt.draw()
         plt.show()
+        print(self.component_count)

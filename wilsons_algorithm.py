@@ -1,7 +1,7 @@
 import numpy as np
 
 from stack import Stack
-from tree import Tree
+from span import Span 
 from edge import Edge
 from state import State
 
@@ -12,9 +12,10 @@ def main_algorithm(vs, p):
         return
 
     wilson_stack = Stack()
-    wilson_tree = Tree(vs)
+    wilson_span = Span(vs)
     starting_vertex = select_unvisited_vertex(vs)
     starting_vertex.state = State.VISITED
+    wilson_span.component_count = wilson_span.component_count + 1
     cover_count = 1
 
     # while we still do not have a spanning tree yet, i.e some vertices are not yet covered
@@ -28,20 +29,31 @@ def main_algorithm(vs, p):
             # we have encountered some vertex that we have already visited. Begin adding vertices to tree
             if current_vertex.state == State.VISITED:
                 wilson_stack.push(current_vertex)
-                cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_tree)
+                cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_span)
                 break
-            # loop detected
+            # loop detected. we need to make some decision before adding it to the tree
             elif current_vertex.state == State.EXPLORED:
                 if (np.random.uniform() < p):
                     wilson_stack.push(current_vertex)
-                    cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_tree) 
+                    cover_count = cover_count + add_stack_to_tree(wilson_stack, wilson_span) 
+                    wilson_span.component_count = wilson_span.component_count + 1
                 else:
                     discard_loop(current_vertex, wilson_stack)
             # no problems here, keep adding to the stack
             elif current_vertex.state == State.NOT_VISITED:
                 current_vertex.state = State.EXPLORED
                 wilson_stack.push(current_vertex)
-    return wilson_tree
+    # This is to eliminate the possible single-vertex component
+    for edge in wilson_span.edge_list:
+        # if any edge in the tree/forest
+        if edge.contains(starting_vertex):
+            return wilson_span
+        # if not, we select a random neighbor, make an edge, and add the single vertex to the explored graph
+        else:
+            ending_vertex = select_neighbor(starting_vertex)
+            wilson_span.add_edge(Edge(starting_vertex, ending_vertex))
+            wilson_span.component_count =  wilson_span.component_count - 1
+            return wilson_span
 
 def discard_loop(current_vertex, wilson_stack):
     while not(current_vertex == wilson_stack.peek()):
