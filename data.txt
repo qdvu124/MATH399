@@ -53,3 +53,170 @@ Level 4 with 1000 iterations: average of 19.632 components
 Level 4 with 1000 iterations: average of 19.669 components
 Level 4 with 1000 iterations: average of 19.580 components
 
+WITH P = 0.5
+
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+
+Level 1 with 1000 iterations: average of 1.116 components
+Level 1 with 1000 iterations: average of 1.118 components
+Level 1 with 1000 iterations: average of 1.142 components
+Level 1 with 1000 iterations: average of 1.138 components
+Level 1 with 1000 iterations: average of 1.120 components
+Level 1 with 1000 iterations: average of 1.111 components
+Level 1 with 1000 iterations: average of 1.113 components
+Level 1 with 1000 iterations: average of 1.113 components
+Level 1 with 1000 iterations: average of 1.117 components
+Level 1 with 1000 iterations: average of 1.111 components
+
+Level 2 with 1000 iterations: average of 1.978 components
+Level 2 with 1000 iterations: average of 1.982 components
+Level 2 with 1000 iterations: average of 2.020 components
+Level 2 with 1000 iterations: average of 1.985 components
+Level 2 with 1000 iterations: average of 1.973 components
+Level 2 with 1000 iterations: average of 2.033 components
+Level 2 with 1000 iterations: average of 1.977 components
+Level 2 with 1000 iterations: average of 2.042 components
+Level 2 with 1000 iterations: average of 2.020 components
+Level 2 with 1000 iterations: average of 1.988 components
+
+Level 3 with 1000 iterations: average of 5.205 components
+Level 3 with 1000 iterations: average of 5.140 components
+Level 3 with 1000 iterations: average of 5.185 components
+Level 3 with 1000 iterations: average of 5.140 components
+Level 3 with 1000 iterations: average of 5.201 components
+Level 3 with 1000 iterations: average of 5.143 components
+Level 3 with 1000 iterations: average of 5.175 components
+Level 3 with 1000 iterations: average of 5.227 components
+Level 3 with 1000 iterations: average of 5.159 components
+Level 3 with 1000 iterations: average of 5.176 components
+
+Level 4 with 1000 iterations: average of 14.952 components
+Level 4 with 1000 iterations: average of 15.056 components
+Level 4 with 1000 iterations: average of 15.057 components
+Level 4 with 1000 iterations: average of 15.073 components
+Level 4 with 1000 iterations: average of 15.080 components
+Level 4 with 1000 iterations: average of 15.058 components
+Level 4 with 1000 iterations: average of 15.026 components
+Level 4 with 1000 iterations: average of 15.078 components
+Level 4 with 1000 iterations: average of 15.044 components
+Level 4 with 1000 iterations: average of 15.124 components
+
+WITH P = 0.1
+
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+
+Level 1 with 1000 iterations: average of 1.040 components
+Level 1 with 1000 iterations: average of 1.036 components
+Level 1 with 1000 iterations: average of 1.029 components
+Level 1 with 1000 iterations: average of 1.032 components
+Level 1 with 1000 iterations: average of 1.035 components
+Level 1 with 1000 iterations: average of 1.035 components
+Level 1 with 1000 iterations: average of 1.037 components
+Level 1 with 1000 iterations: average of 1.026 components
+Level 1 with 1000 iterations: average of 1.024 components
+Level 1 with 1000 iterations: average of 1.021 components
+
+Level 2 with 1000 iterations: average of 1.343 components
+Level 2 with 1000 iterations: average of 1.311 components
+Level 2 with 1000 iterations: average of 1.309 components
+Level 2 with 1000 iterations: average of 1.322 components
+Level 2 with 1000 iterations: average of 1.302 components
+Level 2 with 1000 iterations: average of 1.345 components
+Level 2 with 1000 iterations: average of 1.331 components
+Level 2 with 1000 iterations: average of 1.329 components
+Level 2 with 1000 iterations: average of 1.343 components
+Level 2 with 1000 iterations: average of 1.333 components
+
+Level 3 with 1000 iterations: average of 2.660 components
+Level 3 with 1000 iterations: average of 2.651 components
+Level 3 with 1000 iterations: average of 2.696 components
+Level 3 with 1000 iterations: average of 2.632 components
+Level 3 with 1000 iterations: average of 2.639 components
+Level 3 with 1000 iterations: average of 2.637 components
+Level 3 with 1000 iterations: average of 2.733 components
+Level 3 with 1000 iterations: average of 2.660 components
+Level 3 with 1000 iterations: average of 2.625 components
+Level 3 with 1000 iterations: average of 2.719 components
+
+Level 4 with 1000 iterations: average of 7.191 components
+Level 4 with 1000 iterations: average of 7.344 components
+Level 4 with 1000 iterations: average of 7.226 components
+Level 4 with 1000 iterations: average of 7.252 components
+Level 4 with 1000 iterations: average of 7.266 components
+Level 4 with 1000 iterations: average of 7.178 components
+Level 4 with 1000 iterations: average of 7.374 components
+Level 4 with 1000 iterations: average of 7.252 components
+Level 4 with 1000 iterations: average of 7.249 components
+Level 4 with 1000 iterations: average of 7.342 componentsLevel 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+Level 0 with 1000 iterations: average of 1.000 components
+
+Level 1 with 1000 iterations: average of 1.005 components
+Level 1 with 1000 iterations: average of 1.004 components
+Level 1 with 1000 iterations: average of 1.003 components
+Level 1 with 1000 iterations: average of 1.001 components
+Level 1 with 1000 iterations: average of 1.002 components
+Level 1 with 1000 iterations: average of 1.006 components
+Level 1 with 1000 iterations: average of 1.002 components
+Level 1 with 1000 iterations: average of 1.005 components
+Level 1 with 1000 iterations: average of 1.005 components
+Level 1 with 1000 iterations: average of 1.006 components
+
+Level 2 with 1000 iterations: average of 1.043 components
+Level 2 with 1000 iterations: average of 1.048 components
+Level 2 with 1000 iterations: average of 1.047 components
+Level 2 with 1000 iterations: average of 1.042 components
+Level 2 with 1000 iterations: average of 1.045 components
+Level 2 with 1000 iterations: average of 1.042 components
+Level 2 with 1000 iterations: average of 1.037 components
+Level 2 with 1000 iterations: average of 1.052 components
+Level 2 with 1000 iterations: average of 1.051 components
+Level 2 with 1000 iterations: average of 1.031 components
+
+Level 3 with 1000 iterations: average of 1.304 components
+Level 3 with 1000 iterations: average of 1.254 components
+Level 3 with 1000 iterations: average of 1.280 components
+Level 3 with 1000 iterations: average of 1.266 components
+Level 3 with 1000 iterations: average of 1.258 components
+Level 3 with 1000 iterations: average of 1.304 components
+Level 3 with 1000 iterations: average of 1.259 components
+Level 3 with 1000 iterations: average of 1.276 components
+Level 3 with 1000 iterations: average of 1.269 components
+Level 3 with 1000 iterations: average of 1.273 components
+
+Level 4 with 1000 iterations: average of 2.297 components
+Level 4 with 1000 iterations: average of 2.277 components
+Level 4 with 1000 iterations: average of 2.315 components
+Level 4 with 1000 iterations: average of 2.287 components
+Level 4 with 1000 iterations: average of 2.288 components
+Level 4 with 1000 iterations: average of 2.300 components
+Level 4 with 1000 iterations: average of 2.287 components
+Level 4 with 1000 iterations: average of 2.328 components
+Level 4 with 1000 iterations: average of 2.275 components
+Level 4 with 1000 iterations: average of 2.254 components
+

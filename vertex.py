@@ -4,7 +4,8 @@ from state import State
 class Vertex:
     # this class creates a vertex within the SG 
     
-    def __init__(self, xpos, ypos):
+    def __init__(self, xpos, ypos, id):
+        self.id = id
         self.r = [xpos, ypos]
         self.ns = [] #this is list of the neighbors of the vertex
         self.d = np.random.randint(-2,1) #this is the direction that the edge is pointing in the rotor router algorithm
@@ -19,3 +20,8 @@ class Vertex:
     def __eq__(self, other): 
         return self.r[0] == other.r[0] and self.r[1] == other.r[1]
 
+    def __key(self):
+        return self.id
+
+    def __hash__(self):
+        return hash(self.__key())

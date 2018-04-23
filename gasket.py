@@ -65,7 +65,7 @@ class Gasket:
         vertices = {} # dictionary of vertices
         counter = 1
         for coor in self.graph:
-            vertices[str(counter)] = Vertex(coor[0], coor[1])
+            vertices[str(counter)] = Vertex(coor[0], coor[1], counter)
             counter += 1
         
         for i in vertices:
