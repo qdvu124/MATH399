@@ -1,7 +1,5 @@
 # %matplotlib inline                    
 # comment out previous if not using ipython
-import matplotlib.pyplot as plt
-
 from gasket import Gasket
 from edge import Edge
 from vertex import Vertex
@@ -33,9 +31,9 @@ def average_cycle_length(graph_size, iteration):
         edge_set = set(current_span.edge_list)
         free_edge_list = set()
 
-        for vertex in vs:
-            for current_neighbor in vertex.ns:
-                current_edge = Edge(vertex, current_neighbor)
+        for index in vs:
+            for current_neighbor in vs[index].ns:
+                current_edge = Edge(vs[index], current_neighbor)
                 if not ((current_edge in edge_set) or (current_edge in free_edge_list)):
                     free_edge_list.add(current_edge)
         

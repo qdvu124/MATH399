@@ -1,5 +1,6 @@
 class Edge:
     def __init__(self, starting_vertex, ending_vertex):
+        self.id = frozenset([starting_vertex.id, ending_vertex.id])
         self.starting_vertex = starting_vertex
         self.ending_vertex = ending_vertex
 
@@ -11,6 +12,12 @@ class Edge:
         or (self.ending_vertex == other.starting_vertex and self.starting_vertex == other.ending_vertex)):
             return True
         return False
+
+    def __key(self):
+        return self.id
+
+    def __hash__(self):
+        return hash(self.__key())
 
     def contains(self, vertex):
         return (self.starting_vertex == vertex or self.ending_vertex == vertex)

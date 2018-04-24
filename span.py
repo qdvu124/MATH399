@@ -45,4 +45,3 @@ class Span:
         plt.gca().set_aspect('equal', adjustable='box')
         plt.draw()
         plt.show()
-        print(self.component_count)
