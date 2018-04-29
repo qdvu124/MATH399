@@ -165,7 +165,9 @@ Level 4 with 1000 iterations: average of 7.178 components
 Level 4 with 1000 iterations: average of 7.374 components
 Level 4 with 1000 iterations: average of 7.252 components
 Level 4 with 1000 iterations: average of 7.249 components
-Level 4 with 1000 iterations: average of 7.342 componentsLevel 0 with 1000 iterations: average of 1.000 components
+Level 4 with 1000 iterations: average of 7.342 components
+
+Level 0 with 1000 iterations: average of 1.000 components
 Level 0 with 1000 iterations: average of 1.000 components
 Level 0 with 1000 iterations: average of 1.000 components
 Level 0 with 1000 iterations: average of 1.000 components

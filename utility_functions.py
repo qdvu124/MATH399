@@ -26,24 +26,14 @@ def cycle_length(span_with_cycle):
         graph.add_edge(edge.starting_vertex, edge.ending_vertex)
     return len(list(nx.find_cycle(graph)))
 
-def unicycle_statistics(unicycles, level):
-    statistics = []
-    for unicycle in unicycles:
-        # unicycle_labels = graph_labels(unicycle)
-        # nx.draw_networkx(unicycle, labels=unicycle_labels, font_size=16)
-        # plt.show()
-        cycle = list(nx.find_cycle(unicycle))
-        statistics.append(len(cycle))
-
-    # plt.hist(statistics, range=(0, 2**level), density=False, bins=binSeq(level))
-    #plt.yticks(range(1, statistics.count(4)))
-    plt.show()
-    f = open("statistics.txt", 'a')
-    descriptor = "level " + str(level-1) + "\n"
-    f.write(descriptor)
-    counts = dict()
-    for i in statistics:
-        counts[i] = counts.get(i, 0) + 1
-    f.write(str(counts)+"\n")
-    f.close()
+def unicycle_statistics(statistics):
+    if len(np.unique(statistics)) == 1:
+        mean = np.unique(statistics)[0]
+        return (mean, 0)
+    d = np.diff(np.unique(statistics)).min()
+    left_of_first_bin = min(statistics) - float(d)/2
+    right_of_last_bin = max(statistics) + float(d)/2
+    # uncomment these 2 lines for showing histogram
+    # plt.hist(statistics, np.arange(left_of_first_bin, right_of_last_bin + d, d))
+    # plt.show()
     return (np.mean(statistics), np.std(statistics))
