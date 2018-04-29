@@ -26,14 +26,16 @@ def cycle_length(span_with_cycle):
         graph.add_edge(edge.starting_vertex, edge.ending_vertex)
     return len(list(nx.find_cycle(graph)))
 
-def unicycle_statistics(statistics):
+def calculate_statistics(statistics):
     if len(np.unique(statistics)) == 1:
         mean = np.unique(statistics)[0]
+        plt.hist(statistics)
+        plt.show()
         return (mean, 0)
     d = np.diff(np.unique(statistics)).min()
     left_of_first_bin = min(statistics) - float(d)/2
     right_of_last_bin = max(statistics) + float(d)/2
     # uncomment these 2 lines for showing histogram
-    # plt.hist(statistics, np.arange(left_of_first_bin, right_of_last_bin + d, d))
-    # plt.show()
+    plt.hist(statistics, np.arange(left_of_first_bin, right_of_last_bin + d, d))
+    plt.show()
     return (np.mean(statistics), np.std(statistics))

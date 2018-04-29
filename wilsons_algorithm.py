@@ -7,6 +7,7 @@ from state import State
 
 # Wilson's algorithm on the list of vertices, and with loop rentention probability p
 def main_algorithm(vs, p):
+    # checking that loop retention probability is valid
     if (p < 0 or p > 1):
         print('Invalid value for loop retention probability')
         return

@@ -3,7 +3,7 @@
 from gasket import Gasket
 from edge import Edge
 from vertex import Vertex
-from utility_functions import create_unicycle, cycle_length, unicycle_statistics
+from utility_functions import create_unicycle, cycle_length, calculate_statistics 
 from wilsons_algorithm import main_algorithm
 
 def component_count_main(iteration):
@@ -59,21 +59,24 @@ def average_cycle_length(graph_size, iteration):
         f.write("\n")
         f.close()
 
-    return unicycle_statistics(statistics)
+    return calculate_statistics(statistics)
         
 def average_component_count(graph_size, iteration):
     span_collection = []
+    statistics = []
+
     for _ in range(iteration):
         gasket = Gasket()
         gasket.multiply(graph_size)
         vs = gasket.get_enum_vertices()
-        span_collection.append(main_algorithm(vs, 0))
+        span_collection.append(main_algorithm(vs, 0.01))
 
     component_count = 0
     for span in span_collection:
-        span.print()
+        # span.print()
+        statistics.append(span.component_count)
         component_count =  component_count + span.component_count
-        
-    return component_count/iteration
+    
+    return calculate_statistics(statistics)
 
-average_component_count(5, 10)
+average_component_count(5, 1000)
